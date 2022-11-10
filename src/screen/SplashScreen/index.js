@@ -1,5 +1,7 @@
 import React, {useEffect} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Image, StyleSheet} from 'react-native';
+import splashScreen from '../../assets/auth/splash-screen.png'
+import styles from './styles';
 
 export default function SplashScreen(props) {
   console.log(props);
@@ -15,12 +17,12 @@ export default function SplashScreen(props) {
       } else {
         props.navigation.replace('AuthScreen');
       }
-    }, 1000);
+    }, 2000);
   };
 
   return (
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>Splash Screen</Text>
+      <Image style={styles.imageJumbotron} source={splashScreen} />
     </View>
   );
 }

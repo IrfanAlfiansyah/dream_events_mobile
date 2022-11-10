@@ -3,11 +3,8 @@ import {View, Text, TextInput, Image, TouchableOpacity} from 'react-native';
 import styles from './styles';
 import logo from '../../assets/auth/logo.png';
 
-export default function Signup(props) {
-  const handleRegister = () => {
-    props.navigation.replace('AppScreen', {screen: 'MenuNavigator'});
-  };
-  const navLogin = () => {
+export default function ResetPassword(props) {
+  const handleUpdate= () => {
     props.navigation.navigate('Login');
   };
   // const isAllFormFilled = Object.keys(form).every((e) => form[e]);
@@ -22,29 +19,15 @@ export default function Signup(props) {
           color: 'black',
           paddingHorizontal: 10,
         }}>
-        Signup
+        Reset Password
       </Text>
-      <View style={styles.rowRegister}>
-        <Text style={{color: 'black', fontSize: 16}}>
-          Don't you have any account?
-        </Text>
-        <TouchableOpacity style={styles.buttonRegister} onPress={navLogin}>
-          <Text style={styles.signup}>Login</Text>
-        </TouchableOpacity>
-      </View>
+      <Text style={styles.textTop}>You'll get your account back! </Text>
       <View style={styles.inputContainer}>
         <View>
           <TextInput
             style={styles.input}
             placeholderTextColor={'rgba(160, 163, 189, 1)'}
-            placeholder="Username"
-          />
-        </View>
-        <View>
-          <TextInput
-            style={styles.input}
-            placeholderTextColor={'rgba(160, 163, 189, 1)'}
-            placeholder="Email"
+            placeholder="OTP"
           />
         </View>
         <View>
@@ -52,14 +35,22 @@ export default function Signup(props) {
             style={styles.input}
             secureTextEntry={true}
             placeholderTextColor={'rgba(160, 163, 189, 1)'}
-            placeholder="Password"
+            placeholder="New Password"
+          />
+        </View>
+        <View>
+          <TextInput
+            style={styles.input}
+            secureTextEntry={true}
+            placeholderTextColor={'rgba(160, 163, 189, 1)'}
+            placeholder="Confirm New Password"
           />
         </View>
       </View>
-      <TouchableOpacity style={styles.buttonLogin} onPress={handleRegister}>
+      <TouchableOpacity style={styles.buttonLogin} onPress={handleUpdate}>
         {/* disabled={!isAllFormFilled}> */}
         <Text style={{color: 'white', fontWeight: 'bold', fontSize: 16}}>
-          Signup
+          Update
         </Text>
       </TouchableOpacity>
     </View>
