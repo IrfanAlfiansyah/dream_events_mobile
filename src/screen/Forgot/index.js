@@ -12,15 +12,7 @@ export default function Forgot(props) {
   return (
     <View style={styles.container}>
       <Image source={logo} style={{width: '50%', margin: 10}} />
-      <Text
-        style={{
-          fontSize: 28,
-          fontWeight: 'bold',
-          color: 'black',
-          paddingHorizontal: 10,
-        }}>
-        Forgot Password
-      </Text>
+      <Text style={styles.textBar}>Forgot Password</Text>
       <Text style={styles.textTop}>You'll get mail soon on your email </Text>
       <View style={styles.inputContainer}>
         <View>
@@ -33,7 +25,12 @@ export default function Forgot(props) {
       </View>
       <TouchableOpacity style={styles.buttonLogin} onPress={handleForgot}>
         {/* disabled={!isAllFormFilled}> */}
-        <Text style={{color: 'white', fontWeight: 'bold', fontSize: 16}}>
+        <Text
+          style={{
+            color: 'white',
+            fontFamily: 'Merienda-ExtraBold',
+            fontSize: 16,
+          }}>
           Send
         </Text>
       </TouchableOpacity>

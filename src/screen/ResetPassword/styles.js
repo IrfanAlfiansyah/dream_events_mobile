@@ -1,11 +1,18 @@
 import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
+  textBar: {
+    fontSize: 28,
+    color: 'black',
+    paddingHorizontal: 10,
+    fontFamily: 'Merienda-ExtraBold',
+  },
   textTop: {
     padding: 10,
     fontSize: 16,
     color: 'black',
-    marginBottom: 30,
+    marginBottom: 20,
+    fontFamily: 'Merienda-Regular',
   },
   buttonLogin: {
     padding: 10,
@@ -27,5 +34,6 @@ export default StyleSheet.create({
     marginHorizontal: 10,
     color: 'black',
     fontSize: 16,
+    fontFamily: 'Merienda-Regular',
   },
 });

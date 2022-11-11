@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {View, Image, StyleSheet} from 'react-native';
-import splashScreen from '../../assets/auth/splash-screen.png'
+import splashScreen from '../../assets/auth/splash-screen.png';
 import styles from './styles';
 
 export default function SplashScreen(props) {
@@ -21,7 +21,7 @@ export default function SplashScreen(props) {
   };
 
   return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+    <View style={styles.splash}>
       <Image style={styles.imageJumbotron} source={splashScreen} />
     </View>
   );

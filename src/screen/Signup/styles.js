@@ -1,6 +1,12 @@
 import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
+  textBar: {
+    fontSize: 28,
+    color: 'black',
+    paddingHorizontal: 10,
+    fontFamily: 'Merienda-ExtraBold',
+  },
   rowRegister: {
     display: 'flex',
     flexDirection: 'row',
@@ -13,8 +19,8 @@ export default StyleSheet.create({
   signup: {
     color: 'blue',
     marginLeft: 5,
-    fontSize: 16,
-    fontWeight: 'bold',
+    fontSize: 14,
+    fontFamily: 'Merienda-ExtraBold',
   },
   buttonLogin: {
     padding: 10,
@@ -36,5 +42,14 @@ export default StyleSheet.create({
     marginHorizontal: 10,
     color: 'black',
     fontSize: 16,
+    fontFamily: 'Merienda-Regular',
+  },
+  checkbox: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  checkboxText: {
+    fontSize: 14,
+    fontFamily: 'Merienda-Regular',
   },
 });

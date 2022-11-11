@@ -4,7 +4,7 @@ import styles from './styles';
 import logo from '../../assets/auth/logo.png';
 
 export default function ResetPassword(props) {
-  const handleUpdate= () => {
+  const handleUpdate = () => {
     props.navigation.navigate('Login');
   };
   // const isAllFormFilled = Object.keys(form).every((e) => form[e]);
@@ -12,15 +12,7 @@ export default function ResetPassword(props) {
   return (
     <View style={styles.container}>
       <Image source={logo} style={{width: '50%', margin: 10}} />
-      <Text
-        style={{
-          fontSize: 28,
-          fontWeight: 'bold',
-          color: 'black',
-          paddingHorizontal: 10,
-        }}>
-        Reset Password
-      </Text>
+      <Text style={styles.textBar}>Reset Password</Text>
       <Text style={styles.textTop}>You'll get your account back! </Text>
       <View style={styles.inputContainer}>
         <View>
@@ -49,7 +41,13 @@ export default function ResetPassword(props) {
       </View>
       <TouchableOpacity style={styles.buttonLogin} onPress={handleUpdate}>
         {/* disabled={!isAllFormFilled}> */}
-        <Text style={{color: 'white', fontWeight: 'bold', fontSize: 16}}>
+        <Text
+          style={{
+            color: 'white',
+            fontFamily: 'Merienda-ExtraBold',
+            fontSize: 16,
+          }}
+          onPress={handleUpdate}>
           Update
         </Text>
       </TouchableOpacity>

@@ -1,9 +1,12 @@
 import React from 'react';
 import {View, Text, TextInput, Image, TouchableOpacity} from 'react-native';
+import {ScrollView} from 'react-native-gesture-handler';
 import styles from './styles';
 import logo from '../../assets/auth/logo.png';
+import {Checkbox} from 'react-native-paper';
 
 export default function Signup(props) {
+  const [checked, setChecked] = React.useState(false);
   const handleRegister = () => {
     props.navigation.replace('AppScreen', {screen: 'MenuNavigator'});
   };
@@ -15,24 +18,21 @@ export default function Signup(props) {
   return (
     <View style={styles.container}>
       <Image source={logo} style={{width: '50%', margin: 10}} />
-      <Text
-        style={{
-          fontSize: 28,
-          fontWeight: 'bold',
-          color: 'black',
-          paddingHorizontal: 10,
-        }}>
-        Signup
-      </Text>
+      <Text style={styles.textBar}>Signup</Text>
       <View style={styles.rowRegister}>
-        <Text style={{color: 'black', fontSize: 16}}>
-          Don't you have any account?
+        <Text
+          style={{
+            color: 'black',
+            fontSize: 14,
+            fontFamily: 'Merienda-Regular',
+          }}>
+          Already have an account?
         </Text>
         <TouchableOpacity style={styles.buttonRegister} onPress={navLogin}>
           <Text style={styles.signup}>Login</Text>
         </TouchableOpacity>
       </View>
-      <View style={styles.inputContainer}>
+      <ScrollView style={styles.inputContainer}>
         <View>
           <TextInput
             style={styles.input}
@@ -55,10 +55,24 @@ export default function Signup(props) {
             placeholder="Password"
           />
         </View>
+      </ScrollView>
+      <View style={styles.checkbox}>
+        <Checkbox
+          status={checked ? 'checked' : 'unchecked'}
+          onPress={() => {
+            setChecked(!checked);
+          }}
+        />
+        <Text style={styles.checkboxText}>Accept terms and condition</Text>
       </View>
       <TouchableOpacity style={styles.buttonLogin} onPress={handleRegister}>
         {/* disabled={!isAllFormFilled}> */}
-        <Text style={{color: 'white', fontWeight: 'bold', fontSize: 16}}>
+        <Text
+          style={{
+            color: 'white',
+            fontFamily: 'Merienda-ExtraBold',
+            fontSize: 16,
+          }}>
           Signup
         </Text>
       </TouchableOpacity>

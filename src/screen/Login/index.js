@@ -5,6 +5,7 @@ import google from '../../assets/auth/google.png';
 import facebook from '../../assets/auth/fb.png';
 import finger from '../../assets/auth/finger.png';
 import logo from '../../assets/auth/logo.png';
+import {ScrollView} from 'react-native-gesture-handler';
 
 export default function Login(props) {
   const handleLogin = () => {
@@ -13,9 +14,6 @@ export default function Login(props) {
   const navSignup = () => {
     props.navigation.navigate('Signup');
   };
-  const navFinger = () => {
-    props.navigation.navigate('Touch-Login');
-  };
   const navForgot = () => {
     props.navigation.navigate('Forgot');
   };
@@ -23,17 +21,9 @@ export default function Login(props) {
   return (
     <View style={styles.container}>
       <Image source={logo} style={{width: '50%', margin: 10}} />
-      <Text
-        style={{
-          fontSize: 28,
-          fontWeight: 'bold',
-          color: 'black',
-          paddingHorizontal: 10,
-        }}>
-        Login
-      </Text>
+      <Text style={styles.textBar}>Login</Text>
       <Text style={styles.textTop}>Hi, Welcome back to Urticket! </Text>
-      <View style={styles.inputContainer}>P
+      <ScrollView style={styles.inputContainer}>
         <View>
           <TextInput
             style={styles.input}
@@ -49,18 +39,28 @@ export default function Login(props) {
             placeholder="Password"
           />
         </View>
-      </View>
+      </ScrollView>
       <TouchableOpacity style={styles.buttonForgot} onPress={navForgot}>
         <Text style={styles.forgotText}>Forgot Password</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.buttonLogin} onPress={handleLogin}>
-        <Text style={{color: 'white', fontWeight: 'bold', fontSize: 16}}>
+        <Text
+          style={{
+            color: 'white',
+            fontFamily: 'Merienda-ExtraBold',
+            fontSize: 16,
+          }}>
           Login
         </Text>
       </TouchableOpacity>
       <View style={styles.rowRegister}>
-        <Text style={{color: 'black', fontSize: 16}}>
-          Don't you have any account?
+        <Text
+          style={{
+            color: 'black',
+            fontFamily: 'Merienda-Bold',
+            fontSize: 14,
+          }}>
+          Don't have any account?
         </Text>
         <TouchableOpacity style={styles.buttonRegister} onPress={navSignup}>
           <Text style={styles.signup}>Signup</Text>
@@ -77,9 +77,7 @@ export default function Login(props) {
           <Image style={styles.icon} source={facebook} />
         </View>
         <View style={styles.iconBox}>
-          <TouchableOpacity onPress={navFinger}>
-            <Image style={styles.icon} source={finger} />
-          </TouchableOpacity>
+          <Image style={styles.icon} source={finger} />
         </View>
       </View>
     </View>

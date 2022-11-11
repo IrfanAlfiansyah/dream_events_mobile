@@ -1,4 +1,5 @@
 import React from 'react';
+import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createDrawerNavigator} from '@react-navigation/drawer';
@@ -8,15 +9,31 @@ const Drawer = createDrawerNavigator();
 
 import Home from '../screen/Home';
 import Detail from '../screen/Detail';
-
 import Profile from '../screen/Profile';
+import DrawerContent from '../components/DrawerContent';
 
 function MenuNavigator() {
   return (
     // DAFTARKAN MENU YANG NANTINYA AKAN MASUK KE DALAM DRAWER DISINI
-    <Drawer.Navigator>
-      <Drawer.Screen name="Home" component={Home} />
-      <Drawer.Screen name="Profile" component={Profile} />
+    <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>
+      <Drawer.Screen
+        name="Home"
+        component={Home}
+        options={{
+          drawerIcon: ({size, color}) => (
+            <Icon name="home" color={color} size={size} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          drawerIcon: ({size, color}) => (
+            <Icon name="user-secret" color={color} size={size} />
+          ),
+        }}
+      />
       {/* MY BOOKING */}
       {/* MY WISHLIST */}
     </Drawer.Navigator>

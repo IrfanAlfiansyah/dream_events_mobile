@@ -1,11 +1,18 @@
 import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
+  textBar: {
+    fontSize: 28,
+    color: 'black',
+    paddingHorizontal: 10,
+    fontFamily: 'Merienda-ExtraBold',
+  },
   textTop: {
     padding: 10,
     fontSize: 16,
     color: 'black',
     marginBottom: 20,
+    fontFamily: 'Merienda-Regular',
   },
   rowRegister: {
     display: 'flex',
@@ -20,8 +27,8 @@ export default StyleSheet.create({
   signup: {
     color: 'blue',
     marginLeft: 5,
-    fontSize: 16,
-    fontWeight: 'bold',
+    fontSize: 14,
+    fontFamily: 'Merienda-ExtraBold',
   },
   buttonLogin: {
     padding: 10,
@@ -42,6 +49,7 @@ export default StyleSheet.create({
     marginHorizontal: 10,
     color: 'black',
     fontSize: 16,
+    fontFamily: 'Merienda-Regular',
   },
   buttonForgot: {
     margin: 20,
@@ -49,13 +57,14 @@ export default StyleSheet.create({
   forgotText: {
     textAlign: 'right',
     color: 'rgba(51, 102, 255, 1)',
-    fontWeight: 'bold',
+    fontFamily: 'Merienda-Bold',
   },
   alternativeLogin: {
     textAlign: 'center',
     marginTop: 50,
     marginBottom: 10,
-    fontSize: 16,
+    fontSize: 14,
+    fontFamily: 'Merienda-Bold',
   },
   rowImage: {
     display: 'flex',

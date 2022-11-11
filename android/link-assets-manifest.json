@@ -1,0 +1,17 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/font/Kolker_Brush/KolkerBrush-Regular.ttf",
+      "sha1": "b01a625bbd1b8d27a20f5c666b47fbfe7435875e"
+    },
+    {
+      "path": "src/assets/font/Kolker_Brush/OFL.txt",
+      "sha1": "a8d73fabb87c486fede94eb5d7603dbcae67b6ba"
+    },
+    {
+      "path": "src/assets/font/Kolker_Brush.zip",
+      "sha1": "2ff276a5b6320fbb3f8e7ed95744a6d8cdc02385"
+    }
+  ]
+}
