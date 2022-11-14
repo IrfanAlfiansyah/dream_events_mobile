@@ -63,11 +63,11 @@ export default function Login(props) {
           Don't have any account?
         </Text>
         <TouchableOpacity style={styles.buttonRegister} onPress={navSignup}>
-          <Text style={styles.signup}>Signup</Text>
+          <Text style={styles.signup}>Sign Up</Text>
         </TouchableOpacity>
       </View>
       <View>
-        <Text style={styles.alternativeLogin}>or sign in with</Text>
+        <Text style={styles.alternativeLogin}>or login with</Text>
       </View>
       <View style={styles.rowImage}>
         <View style={styles.iconBox}>

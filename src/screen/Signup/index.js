@@ -18,7 +18,7 @@ export default function Signup(props) {
   return (
     <View style={styles.container}>
       <Image source={logo} style={{width: '50%', margin: 10}} />
-      <Text style={styles.textBar}>Signup</Text>
+      <Text style={styles.textBar}>Sign Up</Text>
       <View style={styles.rowRegister}>
         <Text
           style={{
@@ -73,7 +73,7 @@ export default function Signup(props) {
             fontFamily: 'Merienda-ExtraBold',
             fontSize: 16,
           }}>
-          Signup
+          Sign Up
         </Text>
       </TouchableOpacity>
     </View>

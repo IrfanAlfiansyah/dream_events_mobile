@@ -1,0 +1,56 @@
+import {StyleSheet} from 'react-native';
+
+export default StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'rgba(51, 102, 255, 1)',
+  },
+  searchBar: {
+    borderWidth: 1,
+    borderRadius: 5,
+    borderColor: 'white',
+    margin: 25,
+    paddingHorizontal: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  input: {
+    color: 'white',
+    fontSize: 16,
+    fontFamily: 'Merienda-Bold',
+    paddingHorizontal: 10,
+    width: '100%',
+  },
+  sortDateContainer: {
+    backgroundColor: '#222B45',
+    flexDirection: 'row',
+    padding: 20,
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+  },
+  dateContainer: {
+    alignItems: 'center',
+  },
+  date: {
+    color: 'white',
+    fontFamily: 'Merienda-Regular',
+  },
+  event: {
+    backgroundColor: '#222B45',
+  },
+  eventView: {
+    backgroundColor: 'white',
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+    padding: 30,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  eventText: {
+    fontSize: 16,
+    fontFamily: 'Merienda-Bold',
+    color: 'black',
+  },
+});

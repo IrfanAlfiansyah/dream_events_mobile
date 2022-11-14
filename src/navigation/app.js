@@ -20,6 +20,7 @@ function MenuNavigator() {
         name="Home"
         component={Home}
         options={{
+          headerShown: false,
           drawerIcon: ({size, color}) => (
             <Icon name="home" color={color} size={size} />
           ),
@@ -29,8 +30,39 @@ function MenuNavigator() {
         name="Profile"
         component={Profile}
         options={{
+          headerShown: false,
           drawerIcon: ({size, color}) => (
             <Icon name="user-secret" color={color} size={size} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="My Booking"
+        component={Profile}
+        options={{
+          headerShown: false,
+          drawerIcon: ({size, color}) => (
+            <Icon name="list-alt" color={color} size={size} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="My Wishlist"
+        component={Profile}
+        options={{
+          headerShown: false,
+          drawerIcon: ({size, color}) => (
+            <Icon name="heart" color={color} size={size} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="Settings"
+        component={Profile}
+        options={{
+          headerShown: false,
+          drawerIcon: ({size, color}) => (
+            <Icon name="gears" color={color} size={size} />
           ),
         }}
       />
@@ -50,7 +82,11 @@ export default function AppStackNavigator() {
         component={MenuNavigator}
         options={{headerShown: false}}
       />
-      <Stack.Screen name="Detail" component={Detail} />
+      <Stack.Screen
+        name="Detail"
+        component={Detail}
+        options={{headerShown: false}}
+      />
       {/* ORDER */}
       {/* PAYMENT */}
       {/* EDIT PROFILE */}

@@ -69,7 +69,7 @@ export default StyleSheet.create({
   rowImage: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-evenly',
+    justifyContent: 'center',
   },
   iconBox: {
     borderWidth: 1,
@@ -77,6 +77,7 @@ export default StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 5,
     borderRadius: 5,
+    marginHorizontal: 5,
   },
   icon: {
     width: 25,

@@ -1,41 +1,53 @@
 import React from 'react';
-import {View, Text, StyleSheet, Button} from 'react-native';
+import {View, Text, ScrollView, TextInput, Button} from 'react-native';
+import HomeHeader from '../../components/Header/home';
+import styles from './styles';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import EventCard from '../../components/EventCard';
 
 export default function Home(props) {
-  const navDetail = () => props.navigation.navigate('Detail');
   return (
-    <View style={styles.container}>
-      <View style={styles.sortDateContainer}>
-        <View style={styles.dateContainer}>
-          <Text style={styles.date}>13</Text>
-          <Text style={styles.date}>Mon</Text>
+    <>
+      <HomeHeader {...props} />
+      <ScrollView style={styles.container}>
+        <View style={styles.searchBar}>
+          <Icon name="search" size={25} color={'white'} />
+          <TextInput
+            style={styles.input}
+            placeholderTextColor={'rgba(160, 163, 189, 1)'}
+            placeholder="Search Event"
+          />
         </View>
-        <View style={styles.dateContainer}>
-          <Text style={styles.date}>14</Text>
-          <Text style={styles.date}>Tue</Text>
+        <View style={styles.sortDateContainer}>
+          <View style={styles.dateContainer}>
+            <Text style={styles.date}>13</Text>
+            <Text style={styles.date}>Mon</Text>
+          </View>
+          <View style={styles.dateContainer}>
+            <Text style={styles.date}>14</Text>
+            <Text style={styles.date}>Tue</Text>
+          </View>
+          <View style={styles.dateContainer}>
+            <Text style={styles.date}>15</Text>
+            <Text style={styles.date}>Wed</Text>
+          </View>
+          <View style={styles.dateContainer}>
+            <Text style={styles.date}>16</Text>
+            <Text style={styles.date}>Thu</Text>
+          </View>
+          <View style={styles.dateContainer}>
+            <Text style={styles.date}>17</Text>
+            <Text style={styles.date}>Fri</Text>
+          </View>
         </View>
-        <Text style={styles.date}>15</Text>
-        <Text style={styles.date}>16</Text>
-        <Text style={styles.date}>17</Text>
-      </View>
-      <Text>Home Screen</Text>
-      <Button title="Detail Screen" onPress={navDetail} />
-    </View>
+        <View style={styles.event}>
+          <View style={styles.eventView}>
+            <Text style={styles.eventText}>Events For You</Text>
+            <Icon name="filter" size={25} color={'rgba(51, 102, 255, 1)'} />
+          </View>
+        </View>
+        <EventCard {...props} />
+      </ScrollView>
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {flex: 1},
-  sortDateContainer: {
-    backgroundColor: '#222B45',
-    width: '100%',
-    flexDirection: 'row',
-    padding: 20,
-    alignItems: 'center',
-    justifyContent: 'space-around',
-    borderTopLeftRadius: 30,
-    borderTopRightRadius: 30,
-  },
-  dateContainer: {alignItems: 'center'},
-  date: {color: 'white'},
-});
