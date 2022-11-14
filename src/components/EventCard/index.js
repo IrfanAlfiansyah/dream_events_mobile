@@ -1,6 +1,11 @@
 import React from 'react';
-import {View, ScrollView, Text, ImageBackground} from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import {
+  View,
+  ScrollView,
+  Text,
+  ImageBackground,
+  TouchableOpacity,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import styles from './styles';
 

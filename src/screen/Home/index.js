@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, ScrollView, TextInput, Button} from 'react-native';
+import {View, Text, ScrollView, TextInput} from 'react-native';
 import HomeHeader from '../../components/Header/home';
 import styles from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome';

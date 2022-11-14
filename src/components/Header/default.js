@@ -1,19 +1,19 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default function DefaultHeader(props) {
   const backScreen = () => {
-    // props.navigation.openDrawer();
+    props.navigation.goBack();
   };
   return (
     <View style={styles.header}>
       <TouchableOpacity onPress={backScreen} style={styles.section}>
-        <Text>BACK</Text>
+        <Icon name="long-arrow-left" size={25} color="white" />
       </TouchableOpacity>
       <View style={(styles.section, styles.sectionCenter)}>
-        <Text>{props.name}</Text>
+        <Text style={styles.name}>{props.name}</Text>
       </View>
-      <View style={styles.section} />
     </View>
   );
 }
@@ -22,13 +22,19 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingHorizontal: 20,
-    paddingVertical: 15,
+    paddingHorizontal: 25,
+    paddingVertical: 20,
+    backgroundColor: 'rgba(51, 102, 255, 1)',
   },
   section: {
     flex: 1,
   },
   sectionCenter: {
     alignItems: 'center',
+  },
+  name: {
+    fontFamily: 'Merienda-ExtraBold',
+    fontSize: 20,
+    fontColor: 'white',
   },
 });

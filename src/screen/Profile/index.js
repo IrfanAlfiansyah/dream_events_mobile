@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text} from 'react-native';
 import HomeHeader from '../../components/Header/home';
 
 export default function Profile(props) {
@@ -12,5 +12,3 @@ export default function Profile(props) {
     </>
   );
 }
-
-const style = StyleSheet.create({});

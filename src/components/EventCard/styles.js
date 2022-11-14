@@ -24,5 +24,7 @@ export default StyleSheet.create({
     marginHorizontal: 30,
     height: 350,
     borderRadius: 30,
+    borderWidth: 2,
+    borderColor: 'red',
   },
 });

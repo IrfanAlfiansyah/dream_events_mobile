@@ -1,11 +1,17 @@
 import React from 'react';
-import {View, Text, TextInput, Image, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  Image,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native';
 import styles from './styles';
 import google from '../../assets/auth/google.png';
 import facebook from '../../assets/auth/fb.png';
 import finger from '../../assets/auth/finger.png';
 import logo from '../../assets/auth/logo.png';
-import {ScrollView} from 'react-native-gesture-handler';
 
 export default function Login(props) {
   const handleLogin = () => {

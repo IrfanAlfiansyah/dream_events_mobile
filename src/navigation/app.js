@@ -11,6 +11,8 @@ import Home from '../screen/Home';
 import Detail from '../screen/Detail';
 import Profile from '../screen/Profile';
 import DrawerContent from '../components/DrawerContent';
+import Booking from '../screen/Booking';
+import Payment from '../screen/Payment';
 
 function MenuNavigator() {
   return (
@@ -66,8 +68,6 @@ function MenuNavigator() {
           ),
         }}
       />
-      {/* MY BOOKING */}
-      {/* MY WISHLIST */}
     </Drawer.Navigator>
   );
 }
@@ -87,8 +87,16 @@ export default function AppStackNavigator() {
         component={Detail}
         options={{headerShown: false}}
       />
-      {/* ORDER */}
-      {/* PAYMENT */}
+      <Stack.Screen
+        name="Booking"
+        component={Booking}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Payment"
+        component={Payment}
+        options={{headerShown: false}}
+      />
       {/* EDIT PROFILE */}
       {/* CHANGE PASSWORD */}
     </Stack.Navigator>

@@ -14,12 +14,30 @@ export default function EventCardDetail() {
           resizeMode={'cover'}>
           <View style={styles.rowCard}>
             <Text style={styles.cardTextBold}>Sights & Sounds Exhibition</Text>
-            <View style={{flexDirection: 'row'}}>
-              <Icon name="map-marker" size={25} />
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              <Icon
+                name="map-marker"
+                size={25}
+                color="red"
+                style={{
+                  marginRight: 10,
+                }}
+              />
               <Text style={styles.cardText}>Jakarta, Indonesia</Text>
             </View>
-            <View style={{flexDirection: 'row'}}>
-              <Icon name="map-marker" size={25} />
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}>
+              <Icon
+                name="clock-o"
+                size={20}
+                color="red"
+                style={{
+                  marginRight: 10,
+                }}
+              />
               <Text style={styles.cardText}>Wed, 15 Nov, 4:00 PM</Text>
             </View>
             <Text style={styles.cardText}>Attendees</Text>
