@@ -14,24 +14,28 @@ import logo from '../../assets/auth/logo.png';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Forgot(props) {
-  const [form, setForm] = useState({});
+  // const [form, setForm] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleForgot = async () => {
-    try {
-      setIsLoading(true);
-      const result = await axios.post('auth/forgotPassword', form);
-      alert(result.data.message);
-      props.navigation.navigate('ResetPassword');
-    } catch (error) {
-      setIsLoading(false);
-      alert(error.response.data.message);
-    }
+  const handleForgot = () => {
+    props.navigation.navigate('ResetPassword');
   };
 
-  const handleChangeForm = (value, name) => {
-    setForm({...form, [name]: value});
-  };
+  // const handleForgot = async () => {
+  //   try {
+  //     setIsLoading(true);
+  //     const result = await axios.post('auth/forgotPassword', form);
+  //     alert(result.data.message);
+  //     props.navigation.navigate('ResetPassword');
+  //   } catch (error) {
+  //     setIsLoading(false);
+  //     alert(error.response.data.message);
+  //   }
+  // };
+
+  // const handleChangeForm = (value, name) => {
+  //   setForm({...form, [name]: value});
+  // };
 
   return (
     <ScrollView style={styles.container}>
@@ -46,7 +50,7 @@ export default function Forgot(props) {
             placeholder="Email"
             autoCapitalize="none"
             keyboardType="email-address"
-            onChangeText={text => handleChangeForm(text, 'email')}
+            // onChangeText={text => handleChangeForm(text, 'email')}
           />
         </View>
       </View>

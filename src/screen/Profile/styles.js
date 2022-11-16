@@ -12,6 +12,13 @@ export default StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 20,
   },
+  photo: {
+    width: 150,
+    height: 150,
+    borderColor: 'rgba(51, 102, 255, 1)',
+    borderWidth: 5,
+    borderRadius: 100,
+  },
   profileName: {
     fontFamily: 'Merienda-ExtraBold',
     fontSize: 20,
@@ -45,6 +52,13 @@ export default StyleSheet.create({
     backgroundColor: 'white',
     paddingHorizontal: 20,
   },
+  rowEdit: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginLeft: 5,
+    alignItems: 'center',
+    width: '90%',
+  },
   textEdit: {
     fontFamily: 'Merienda-Bold',
     fontSize: 14,
@@ -52,10 +66,8 @@ export default StyleSheet.create({
     paddingLeft: 10,
     paddingVertical: 10,
   },
-  icon: {
-    left: 200,
-  },
-  iconChange: {
-    left: 160,
+  bottom: {
+    backgroundColor: 'white',
+    paddingBottom: 50,
   },
 });

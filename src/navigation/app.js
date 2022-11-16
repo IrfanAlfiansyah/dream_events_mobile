@@ -13,6 +13,10 @@ import Profile from '../screen/Profile';
 import DrawerContent from '../components/DrawerContent';
 import Booking from '../screen/Booking';
 import Payment from '../screen/Payment';
+import EditProfile from '../screen/EditProfile';
+import ChangePassword from '../screen/ChangePassword';
+import MyBooking from '../screen/MyBooking';
+import MyWishlist from '../screen/MyWishlist';
 
 function MenuNavigator() {
   return (
@@ -40,7 +44,7 @@ function MenuNavigator() {
       />
       <Drawer.Screen
         name="My Booking"
-        component={Profile}
+        component={MyBooking}
         options={{
           headerShown: false,
           drawerIcon: ({size, color}) => (
@@ -50,21 +54,11 @@ function MenuNavigator() {
       />
       <Drawer.Screen
         name="My Wishlist"
-        component={Profile}
+        component={MyWishlist}
         options={{
           headerShown: false,
           drawerIcon: ({size, color}) => (
             <Icon name="heart" color={color} size={size} />
-          ),
-        }}
-      />
-      <Drawer.Screen
-        name="Settings"
-        component={Profile}
-        options={{
-          headerShown: false,
-          drawerIcon: ({size, color}) => (
-            <Icon name="gears" color={color} size={size} />
           ),
         }}
       />
@@ -97,8 +91,16 @@ export default function AppStackNavigator() {
         component={Payment}
         options={{headerShown: false}}
       />
-      {/* EDIT PROFILE */}
-      {/* CHANGE PASSWORD */}
+      <Stack.Screen
+        name="Edit Profile"
+        component={EditProfile}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Change Password"
+        component={ChangePassword}
+        options={{headerShown: false}}
+      />
     </Stack.Navigator>
   );
 }

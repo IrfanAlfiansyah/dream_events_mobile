@@ -6,9 +6,10 @@ export default function DefaultHeader(props) {
   const backScreen = () => {
     props.navigation.goBack();
   };
+  console.log(props);
   return (
     <View style={styles.header}>
-      <TouchableOpacity onPress={backScreen} style={styles.section}>
+      <TouchableOpacity onPress={backScreen}>
         <Icon name="long-arrow-left" size={25} color="white" />
       </TouchableOpacity>
       <View style={(styles.section, styles.sectionCenter)}>
@@ -25,9 +26,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 25,
     paddingVertical: 20,
     backgroundColor: 'rgba(51, 102, 255, 1)',
-  },
-  section: {
-    flex: 1,
+    alignItems: 'center',
   },
   sectionCenter: {
     alignItems: 'center',
