@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
+import axios from '../../utils/axios';
 import {
   View,
   Text,
   TextInput,
   Image,
   ScrollView,
+  ActivityIndicator,
   TouchableOpacity,
 } from 'react-native';
 import styles from './styles';
@@ -12,11 +14,46 @@ import google from '../../assets/auth/google.png';
 import facebook from '../../assets/auth/fb.png';
 import finger from '../../assets/auth/finger.png';
 import logo from '../../assets/auth/logo.png';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import Icon from 'react-native-vector-icons/Feather';
+import {getUserById} from '../../stores/action/user';
+import {useDispatch} from 'react-redux';
 
 export default function Login(props) {
-  const handleLogin = () => {
-    props.navigation.replace('AppScreen', {screen: 'MenuNavigator'});
+  const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
+  const [isPwdShown, setIsPwdShown] = useState(false);
+  const [form, setForm] = useState({
+    email: '',
+    password: '',
+  });
+
+  const handleLogin = async () => {
+    try {
+      if (form.email === '' || form.password === '') {
+        alert('Please input your email/password');
+      } else {
+        setIsLoading(true);
+        const result = await axios.post('auth/login', form);
+        await AsyncStorage.setItem('token', result.data.data.token);
+        await AsyncStorage.setItem(
+          'refreshToken',
+          result.data.data.refreshToken,
+        );
+        await dispatch(getUserById(result.data.data.userId));
+        alert(result.data.message);
+        props.navigation.replace('AppScreen', {screen: 'MenuNavigator'});
+      }
+    } catch (error) {
+      setIsLoading(false);
+      alert(error.response.data.message);
+    }
   };
+
+  const handleChangeForm = (value, name) => {
+    setForm({...form, [name]: value});
+  };
+
   const navSignup = () => {
     props.navigation.navigate('Signup');
   };
@@ -35,29 +72,56 @@ export default function Login(props) {
             style={styles.input}
             placeholderTextColor={'rgba(160, 163, 189, 1)'}
             placeholder="Email"
+            autoCapitalize="none"
+            keyboardType="email-address"
+            onChangeText={text => handleChangeForm(text, 'email')}
           />
         </View>
         <View>
           <TextInput
             style={styles.input}
-            secureTextEntry={true}
+            secureTextEntry={isPwdShown ? false : true}
             placeholderTextColor={'rgba(160, 163, 189, 1)'}
             placeholder="Password"
+            autoCapitalize="none"
+            onChangeText={text => handleChangeForm(text, 'password')}
           />
+          <TouchableOpacity
+            style={{
+              position: 'absolute',
+              right: 10,
+              height: '100%',
+              paddingHorizontal: 12,
+              justifyContent: 'center',
+            }}
+            onPress={() => setIsPwdShown(!isPwdShown)}>
+            {isPwdShown ? (
+              <Icon name="eye-off" size={18} />
+            ) : (
+              <Icon name="eye" size={18} />
+            )}
+          </TouchableOpacity>
         </View>
       </ScrollView>
       <TouchableOpacity style={styles.buttonForgot} onPress={navForgot}>
         <Text style={styles.forgotText}>Forgot Password</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.buttonLogin} onPress={handleLogin}>
-        <Text
-          style={{
-            color: 'white',
-            fontFamily: 'Merienda-ExtraBold',
-            fontSize: 16,
-          }}>
-          Login
-        </Text>
+      <TouchableOpacity
+        style={styles.buttonLogin}
+        activeOpacity={0.9}
+        onPress={handleLogin}>
+        {isLoading ? (
+          <ActivityIndicator color="white" size="small" />
+        ) : (
+          <Text
+            style={{
+              color: 'white',
+              fontFamily: 'Merienda-ExtraBold',
+              fontSize: 16,
+            }}>
+            Login
+          </Text>
+        )}
       </TouchableOpacity>
       <View style={styles.rowRegister}>
         <Text

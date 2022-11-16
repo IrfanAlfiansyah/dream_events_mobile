@@ -7,6 +7,9 @@ export default StyleSheet.create({
   },
   rowCard: {
     marginHorizontal: 20,
+    position: 'absolute',
+    bottom: 30,
+    left: 25,
   },
   cardText: {
     color: 'white',
@@ -24,7 +27,5 @@ export default StyleSheet.create({
     marginHorizontal: 30,
     height: 350,
     borderRadius: 30,
-    borderWidth: 2,
-    borderColor: 'red',
   },
 });

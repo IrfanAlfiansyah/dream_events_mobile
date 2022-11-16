@@ -1,33 +1,51 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+import {useSelector} from 'react-redux';
+import axios from '../../utils/axios';
 import {
   DrawerContentScrollView,
   DrawerItem,
   DrawerItemList,
 } from '@react-navigation/drawer';
 
+import profileEmpty from '../../assets/auth/profile-empty.jpg';
+
 import Icon from 'react-native-vector-icons/Feather';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function DrawerContent(props) {
+  const profile = useSelector(state => state.user.data);
+  console.log(profile.image);
+
   const handleLogout = async () => {
     try {
-      alert('Logout');
       await AsyncStorage.clear();
+      await axios.post('auth/logout');
+      alert('Success Logout');
       props.navigation.replace('AuthScreen', {
         screen: 'Login',
       });
     } catch (error) {}
   };
+
   return (
     <View style={styles.container}>
       <DrawerContentScrollView {...props}>
         <View style={styles.containerProfile}>
-          <View style={styles.avatar} />
+          <View
+            style={styles.avatar}
+            source={
+              profile.image !== null
+                ? {
+                    uri: `https://res.cloudinary.com/dizpe4s9c/image/upload/v1663089546/${profile.image}`,
+                  }
+                : profileEmpty
+            }
+          />
           <View style={styles.biodata}>
-            <Text style={styles.title}>Anonymous</Text>
-            <Text style={styles.caption}>@bagustea</Text>
+            <Text style={styles.title}>{profile.username}</Text>
+            <Text style={styles.caption}>{profile.email}</Text>
           </View>
         </View>
         <DrawerItemList {...props} />
@@ -58,7 +76,10 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 40,
-    backgroundColor: 'blue',
+    // marginTop: 100,
+    // left: 100,
+    borderColor: 'blue',
+    borderWidth: 2,
   },
   biodata: {
     marginLeft: 15,
@@ -66,11 +87,13 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 16,
     marginBottom: 3,
-    fontWeight: 'bold',
+    fontFamily: 'Merienda-ExtraBold',
+    color: 'black',
   },
   caption: {
     fontSize: 14,
     lineHeight: 14,
+    fontFamily: 'Merienda-Bold',
   },
   containerSection: {
     marginBottom: 5,
