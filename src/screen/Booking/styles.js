@@ -51,11 +51,18 @@ export default StyleSheet.create({
   quantity: {
     flexDirection: 'row',
     marginTop: 10,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '80%',
   },
   quantityText: {
     fontFamily: 'Merienda-Bold',
     fontSize: 14,
     color: 'black',
+  },
+  counter: {
+    fontSize: 30,
+    fontFamily: 'Merienda-ExtraBold',
   },
   ticketSection: {
     fontFamily: 'Merienda-Bold',

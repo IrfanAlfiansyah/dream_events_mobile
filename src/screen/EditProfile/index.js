@@ -7,18 +7,16 @@ import {
   TouchableOpacity,
   TextInput,
 } from 'react-native';
-import DefaultHeader from '../../components/Header/default';
 import styles from './styles';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import DatePicker from 'react-native-date-picker';
 
-export default function EditProfile(props) {
+export default function EditProfile() {
   const [date, setDate] = useState(new Date());
   const [open, setOpen] = useState(false);
 
   return (
     <>
-      <DefaultHeader {...props} />
       <ScrollView style={styles.profile}>
         <View style={styles.photoProfile}>
           <Image

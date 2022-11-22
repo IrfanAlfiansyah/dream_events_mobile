@@ -6,9 +6,9 @@ import {
   ImageBackground,
   TouchableOpacity,
 } from 'react-native';
-import HeaderDetail from '../../components/Header/detail';
 import EventCardDetail from '../../components/EventCardDetail';
 import styles from './styles';
+import HeaderDetail from '../../components/Header/detail';
 
 export default function Detail(props) {
   const navBooking = () => props.navigation.navigate('Booking');

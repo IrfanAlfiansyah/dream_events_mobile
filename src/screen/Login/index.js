@@ -61,6 +61,10 @@ export default function Login(props) {
     props.navigation.navigate('Forgot');
   };
 
+  const handleNotification = () => {
+    console.log("Click Me!");
+  }
+
   return (
     <View style={styles.container}>
       <Image source={logo} style={{width: '50%', margin: 10}} />
@@ -103,7 +107,7 @@ export default function Login(props) {
           </TouchableOpacity>
         </View>
       </ScrollView>
-      <TouchableOpacity style={styles.buttonForgot} onPress={navForgot}>
+      <TouchableOpacity style={styles.buttonForgot} onPress={handleNotification}>
         <Text style={styles.forgotText}>Forgot Password</Text>
       </TouchableOpacity>
       <TouchableOpacity

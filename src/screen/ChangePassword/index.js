@@ -6,17 +6,15 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
-import DefaultHeader from '../../components/Header/default';
 import styles from './styles';
 import Icon from 'react-native-vector-icons/Feather';
 
-export default function ChangePassword(props) {
+export default function ChangePassword() {
   const [isPwdShown, setIsPwdShown] = useState(false);
   const [isPwdShown2, setIsPwdShown2] = useState(false);
   const [isPwdShown3, setIsPwdShown3] = useState(false);
   return (
     <>
-      <DefaultHeader {...props} />
       <ScrollView style={styles.password}>
         <View style={styles.changePw}>
           <View style={styles.textEdit}>

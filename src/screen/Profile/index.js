@@ -1,6 +1,5 @@
 import React from 'react';
 import {View, Text, Image, ScrollView, TouchableOpacity} from 'react-native';
-import DefaultHeader from '../../components/Header/default';
 import styles from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -13,7 +12,6 @@ export default function Profile(props) {
   };
   return (
     <>
-      <DefaultHeader {...props} />
       <ScrollView style={styles.profile}>
         <View style={styles.profileBg}>
           <Image

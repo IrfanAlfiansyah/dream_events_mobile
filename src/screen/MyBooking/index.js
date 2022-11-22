@@ -1,13 +1,10 @@
 import React from 'react';
 import {View, Text, ScrollView, Image, TouchableOpacity} from 'react-native';
-import DefaultHeader from '../../components/Header/default';
 import styles from './styles';
-import Icon from 'react-native-vector-icons/Feather';
 
-export default function MyBooking(props) {
+export default function MyBooking() {
   return (
     <>
-      <DefaultHeader {...props} />
       <ScrollView style={styles.booking}>
         <View style={styles.myBooking}>
           <View>

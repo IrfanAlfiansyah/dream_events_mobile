@@ -1,11 +1,18 @@
 import React from 'react';
-import {View, Text, ScrollView, TextInput} from 'react-native';
+import {
+  View,
+  Text,
+  ScrollView,
+  TextInput,
+  TouchableOpacity,
+} from 'react-native';
 import HomeHeader from '../../components/Header/home';
 import styles from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import EventCard from '../../components/EventCard';
 
 export default function Home(props) {
+  const navSeeAll = () => props.navigation.navigate('All Event');
   return (
     <>
       <HomeHeader {...props} />
@@ -47,6 +54,11 @@ export default function Home(props) {
           </View>
         </View>
         <EventCard {...props} />
+        <View style={styles.buttonSection}>
+          <TouchableOpacity style={styles.button} onPress={navSeeAll}>
+            <Text style={styles.buttonText}>See All</Text>
+          </TouchableOpacity>
+        </View>
       </ScrollView>
     </>
   );

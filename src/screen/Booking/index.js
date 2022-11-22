@@ -1,16 +1,20 @@
 import React from 'react';
 import {View, Text, ScrollView, Image, TouchableOpacity} from 'react-native';
-import DefaultHeader from '../../components/Header/default';
 import styles from './styles';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
+import {useSelector, useDispatch} from 'react-redux';
+import {incrementCounter, decrementCounter} from '../../stores/action/counter';
+
 export default function Booking(props) {
+  const counter = useSelector(state => state.counter);
+  const dispatch = useDispatch();
+
   const checkout = () => {
     props.navigation.navigate('Payment');
   };
   return (
     <>
-      <DefaultHeader {...props} />
       <ScrollView style={styles.booking}>
         <View style={styles.seat}>
           <Image source={require('../../assets/event/seat.png')} />
@@ -32,6 +36,13 @@ export default function Booking(props) {
           </View>
           <View style={styles.quantity}>
             <Text style={styles.quantityText}>Quantity</Text>
+            <TouchableOpacity onPress={() => dispatch(decrementCounter())}>
+              <Icon name="minus" size={20} />
+            </TouchableOpacity>
+            <Text style={styles.counter}>{counter.count}</Text>
+            <TouchableOpacity onPress={() => dispatch(incrementCounter(1))}>
+              <Icon name="plus" size={20} />
+            </TouchableOpacity>
           </View>
           <View style={styles.section}>
             <Image source={require('../../assets/event/vip.png')} />
@@ -46,6 +57,13 @@ export default function Booking(props) {
           </View>
           <View style={styles.quantity}>
             <Text style={styles.quantityText}>Quantity</Text>
+            <TouchableOpacity onPress={() => dispatch(decrementCounter())}>
+              <Icon name="minus" size={20} />
+            </TouchableOpacity>
+            <Text style={styles.counter}>{counter.count}</Text>
+            <TouchableOpacity onPress={() => dispatch(incrementCounter(1))}>
+              <Icon name="plus" size={20} />
+            </TouchableOpacity>
           </View>
           <View style={styles.section}>
             <Image source={require('../../assets/event/vvip.png')} />
@@ -60,6 +78,13 @@ export default function Booking(props) {
           </View>
           <View style={styles.quantity}>
             <Text style={styles.quantityText}>Quantity</Text>
+            <TouchableOpacity onPress={() => dispatch(decrementCounter())}>
+              <Icon name="minus" size={20} />
+            </TouchableOpacity>
+            <Text style={styles.counter}>{counter.count}</Text>
+            <TouchableOpacity onPress={() => dispatch(incrementCounter(1))}>
+              <Icon name="plus" size={20} />
+            </TouchableOpacity>
           </View>
           <View style={styles.checkout}>
             <Text style={styles.ticketSection}>Ticket Section</Text>

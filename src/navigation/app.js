@@ -17,6 +17,9 @@ import EditProfile from '../screen/EditProfile';
 import ChangePassword from '../screen/ChangePassword';
 import MyBooking from '../screen/MyBooking';
 import MyWishlist from '../screen/MyWishlist';
+import AllEvent from '../screen/AllEvent';
+
+import HeaderDefault from '../components/Header/default';
 
 function MenuNavigator() {
   return (
@@ -36,7 +39,7 @@ function MenuNavigator() {
         name="Profile"
         component={Profile}
         options={{
-          headerShown: false,
+          header: props => <HeaderDefault {...props} name="Profile" />,
           drawerIcon: ({size, color}) => (
             <Icon name="user-secret" color={color} size={size} />
           ),
@@ -46,7 +49,7 @@ function MenuNavigator() {
         name="My Booking"
         component={MyBooking}
         options={{
-          headerShown: false,
+          header: props => <HeaderDefault {...props} name="My Booking" />,
           drawerIcon: ({size, color}) => (
             <Icon name="list-alt" color={color} size={size} />
           ),
@@ -56,7 +59,7 @@ function MenuNavigator() {
         name="My Wishlist"
         component={MyWishlist}
         options={{
-          headerShown: false,
+          header: props => <HeaderDefault {...props} name="My Wishlist" />,
           drawerIcon: ({size, color}) => (
             <Icon name="heart" color={color} size={size} />
           ),
@@ -84,22 +87,33 @@ export default function AppStackNavigator() {
       <Stack.Screen
         name="Booking"
         component={Booking}
-        options={{headerShown: false}}
+        options={{header: props => <HeaderDefault {...props} name="Order" />}}
       />
       <Stack.Screen
         name="Payment"
         component={Payment}
-        options={{headerShown: false}}
+        options={{header: props => <HeaderDefault {...props} name="Payment" />}}
       />
       <Stack.Screen
         name="Edit Profile"
         component={EditProfile}
-        options={{headerShown: false}}
+        options={{
+          header: props => <HeaderDefault {...props} name="Edit Profile" />,
+        }}
       />
       <Stack.Screen
         name="Change Password"
         component={ChangePassword}
-        options={{headerShown: false}}
+        options={{
+          header: props => <HeaderDefault {...props} name="Change Password" />,
+        }}
+      />
+      <Stack.Screen
+        name="All Event"
+        component={AllEvent}
+        options={{
+          header: props => <HeaderDefault {...props} name="List Event" />,
+        }}
       />
     </Stack.Navigator>
   );

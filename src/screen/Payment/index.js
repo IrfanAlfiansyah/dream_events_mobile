@@ -1,17 +1,15 @@
 import React from 'react';
 import {View, Text, ScrollView, Image, TouchableOpacity} from 'react-native';
-import DefaultHeader from '../../components/Header/default';
 import {RadioButton} from 'react-native-paper';
 import styles from './styles';
 
-export default function Payment(props) {
+export default function Payment() {
   const [checked, setChecked] = React.useState(false);
   const [checked2, setChecked2] = React.useState(false);
   const [checked3, setChecked3] = React.useState(false);
   const [checked4, setChecked4] = React.useState(false);
   return (
     <>
-      <DefaultHeader {...props} />
       <ScrollView style={styles.payment}>
         <View style={styles.paymentSection}>
           <Text style={styles.paymentText}>Payment Method</Text>

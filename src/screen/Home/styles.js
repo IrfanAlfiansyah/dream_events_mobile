@@ -53,4 +53,21 @@ export default StyleSheet.create({
     fontFamily: 'Merienda-Bold',
     color: 'black',
   },
+  buttonSection: {
+    backgroundColor: 'white',
+  },
+  button: {
+    paddingVertical: 10,
+    marginHorizontal: 20,
+    flexDirection: 'row',
+    backgroundColor: 'blue',
+    borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonText: {
+    fontFamily: 'Merienda-ExtraBold',
+    color: 'white',
+    fontSize: 16,
+  },
 });
