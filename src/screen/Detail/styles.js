@@ -1,6 +1,24 @@
 import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
+  card: {
+    backgroundColor: 'white',
+  },
+  rowCard: {
+    marginHorizontal: 20,
+  },
+  cardText: {
+    color: 'white',
+    fontSize: 16,
+    fontFamily: 'Merienda-Bold',
+    marginVertical: 5,
+  },
+  cardTextBold: {
+    color: 'white',
+    fontSize: 20,
+    fontFamily: 'Merienda-ExtraBold',
+    marginTop: 170,
+  },
   detailCard: {
     padding: 25,
     backgroundColor: 'white',
@@ -41,5 +59,8 @@ export default StyleSheet.create({
     fontSize: 16,
     fontFamily: 'Merienda-ExtraBold',
     color: 'white',
+  },
+  attendees: {
+    marginBottom: 20,
   },
 });

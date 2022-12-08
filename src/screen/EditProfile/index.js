@@ -10,17 +10,26 @@ import {
 import styles from './styles';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import DatePicker from 'react-native-date-picker';
+import {useSelector} from 'react-redux';
+import profileDefault from '../../assets/auth/profile-empty.jpg';
 
 export default function EditProfile() {
   const [date, setDate] = useState(new Date());
   const [open, setOpen] = useState(false);
+  const profile = useSelector(state => state.user.data);
 
   return (
     <>
       <ScrollView style={styles.profile}>
         <View style={styles.photoProfile}>
           <Image
-            source={require('../../assets/auth/profile.jpg')}
+            source={
+              profile.image
+                ? {
+                    uri: `https://res.cloudinary.com/dizpe4s9c/image/upload/v1663089546/${profile.image}`,
+                  }
+                : profileDefault
+            }
             style={styles.photo}
           />
           <TouchableOpacity>
@@ -34,68 +43,34 @@ export default function EditProfile() {
         </View>
         <View style={styles.textEdit}>
           <Text style={styles.label}>Name</Text>
-          <TextInput
-            style={styles.input}
-            placeholderTextColor={'rgba(160, 163, 189, 1)'}
-            placeholder="name"
-          />
+          <TextInput style={styles.input}>{profile.name}</TextInput>
         </View>
         <View style={styles.textEdit}>
           <Text style={styles.label}>Username</Text>
-          <TextInput
-            style={styles.input}
-            placeholderTextColor={'rgba(160, 163, 189, 1)'}
-            placeholder="name"
-          />
+          <TextInput style={styles.input}>{profile.username}</TextInput>
         </View>
         <View style={styles.textEdit}>
           <Text style={styles.label}>Email</Text>
-          <TextInput
-            style={styles.input}
-            placeholderTextColor={'rgba(160, 163, 189, 1)'}
-            placeholder="name"
-          />
-        </View>
-        <View style={styles.textEdit}>
-          <Text style={styles.label}>Phone</Text>
-          <TextInput
-            style={styles.input}
-            placeholderTextColor={'rgba(160, 163, 189, 1)'}
-            placeholder="name"
-          />
+          <TextInput style={styles.input}>{profile.email}</TextInput>
         </View>
         <View style={styles.textEdit}>
           <Text style={styles.label}>Gender</Text>
-          <TextInput
-            style={styles.input}
-            placeholderTextColor={'rgba(160, 163, 189, 1)'}
-            placeholder="name"
-          />
+          <TextInput style={styles.input}>{profile.gender}</TextInput>
         </View>
         <View style={styles.textEdit}>
           <Text style={styles.label}>Profession</Text>
-          <TextInput
-            style={styles.input}
-            placeholderTextColor={'rgba(160, 163, 189, 1)'}
-            placeholder="name"
-          />
+          <TextInput style={styles.input}>{profile.profession}</TextInput>
         </View>
         <View style={styles.textEdit}>
           <Text style={styles.label}>Nationality</Text>
-          <TextInput
-            style={styles.input}
-            placeholderTextColor={'rgba(160, 163, 189, 1)'}
-            placeholder="name"
-          />
+          <TextInput style={styles.input}>{profile.nationality}</TextInput>
         </View>
         <View style={styles.textEdit}>
           <Text style={styles.label}>Birtday Date</Text>
           <View style={styles.datePicker}>
-            <TextInput
-              style={styles.inputDate}
-              placeholderTextColor={'rgba(160, 163, 189, 1)'}
-              placeholder="name"
-            />
+            <TextInput style={styles.inputDate}>
+              {profile.dateOfBirth}
+            </TextInput>
             <View style={styles.textEdit}>
               <TouchableOpacity title="Open" onPress={() => setOpen(true)}>
                 <Icon name="clock-edit-outline" size={25} color="blue" />

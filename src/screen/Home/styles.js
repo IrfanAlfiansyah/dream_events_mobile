@@ -30,12 +30,10 @@ export default StyleSheet.create({
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
   },
-  dateContainer: {
-    alignItems: 'center',
-  },
   date: {
     color: 'white',
     fontFamily: 'Merienda-Regular',
+    textAlign: 'center',
   },
   event: {
     backgroundColor: '#222B45',
@@ -44,9 +42,10 @@ export default StyleSheet.create({
     backgroundColor: 'white',
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
-    padding: 30,
+    paddingHorizontal: 30,
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
   },
   eventText: {
     fontSize: 16,
@@ -64,6 +63,7 @@ export default StyleSheet.create({
     borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
+    marginBottom: 100,
   },
   buttonText: {
     fontFamily: 'Merienda-ExtraBold',

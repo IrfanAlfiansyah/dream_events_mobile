@@ -11,21 +11,21 @@ export default StyleSheet.create({
     bottom: 30,
     left: 25,
   },
-  cardText: {
-    color: 'white',
-    fontSize: 12,
-    fontFamily: 'Merienda-Bold',
-    marginTop: 230,
-  },
   cardTextBold: {
     color: 'white',
     fontSize: 16,
     fontFamily: 'Merienda-ExtraBold',
+  },
+  cardText: {
+    color: 'white',
+    fontSize: 12,
+    fontFamily: 'Merienda-Bold',
     marginVertical: 10,
   },
   image: {
-    marginHorizontal: 30,
-    height: 350,
+    marginHorizontal: 10,
+    height: 250,
+    width: 200,
     borderRadius: 30,
   },
 });

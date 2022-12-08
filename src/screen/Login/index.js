@@ -62,12 +62,15 @@ export default function Login(props) {
   };
 
   const handleNotification = () => {
-    console.log("Click Me!");
-  }
+    console.log('Click Me!');
+  };
 
   return (
     <View style={styles.container}>
-      <Image source={logo} style={{width: '50%', margin: 10}} />
+      <Image
+        source={logo}
+        style={{width: 140, height: 35, margin: 10, borderRadius: 5}}
+      />
       <Text style={styles.textBar}>Login</Text>
       <Text style={styles.textTop}>Hi, Welcome back to Urticket! </Text>
       <ScrollView style={styles.inputContainer}>
@@ -107,7 +110,7 @@ export default function Login(props) {
           </TouchableOpacity>
         </View>
       </ScrollView>
-      <TouchableOpacity style={styles.buttonForgot} onPress={handleNotification}>
+      <TouchableOpacity style={styles.buttonForgot} onPress={navForgot}>
         <Text style={styles.forgotText}>Forgot Password</Text>
       </TouchableOpacity>
       <TouchableOpacity

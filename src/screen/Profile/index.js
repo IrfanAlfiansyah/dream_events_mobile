@@ -2,8 +2,12 @@ import React from 'react';
 import {View, Text, Image, ScrollView, TouchableOpacity} from 'react-native';
 import styles from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {useSelector} from 'react-redux';
+import profileDefault from '../../assets/auth/profile-empty.jpg';
 
 export default function Profile(props) {
+  const profile = useSelector(state => state.user.data);
+
   const handleEdit = () => {
     props.navigation.navigate('Edit Profile');
   };
@@ -15,11 +19,23 @@ export default function Profile(props) {
       <ScrollView style={styles.profile}>
         <View style={styles.profileBg}>
           <Image
-            source={require('../../assets/auth/profile.jpg')}
+            source={
+              profile.image
+                ? {
+                    uri: `https://res.cloudinary.com/dizpe4s9c/image/upload/v1663089546/${profile.image}`,
+                  }
+                : profileDefault
+            }
             style={styles.photo}
           />
-          <Text style={styles.profileName}>Jhon Thomson</Text>
-          <Text style={styles.profileJob}>Entrepreneur, ID</Text>
+          <Text style={styles.profileName}>
+            {profile.username} {profile.name}
+          </Text>
+          <Text style={styles.profileJob}>
+            {profile.profession}
+            {', '}
+            {profile.nationality}
+          </Text>
         </View>
         <View style={styles.card}>
           <Text style={styles.cardText}>Card</Text>

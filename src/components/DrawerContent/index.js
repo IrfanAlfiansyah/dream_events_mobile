@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Image, Text, StyleSheet} from 'react-native';
 import {useSelector} from 'react-redux';
 import axios from '../../utils/axios';
 import {
@@ -16,7 +16,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function DrawerContent(props) {
   const profile = useSelector(state => state.user.data);
-  console.log(profile.image);
 
   const handleLogout = async () => {
     try {
@@ -33,8 +32,7 @@ function DrawerContent(props) {
     <View style={styles.container}>
       <DrawerContentScrollView {...props}>
         <View style={styles.containerProfile}>
-          <View
-            style={styles.avatar}
+          <Image
             source={
               profile.image
                 ? {
@@ -42,6 +40,7 @@ function DrawerContent(props) {
                   }
                 : profileEmpty
             }
+            style={styles.avatar}
           />
           <View style={styles.biodata}>
             <Text style={styles.title}>{profile.username}</Text>

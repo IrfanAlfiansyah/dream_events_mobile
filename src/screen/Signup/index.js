@@ -51,7 +51,10 @@ export default function Signup(props) {
 
   return (
     <ScrollView style={styles.container}>
-      <Image source={logo} style={{width: '50%', margin: 10}} />
+      <Image
+        source={logo}
+        style={{width: 140, height: 35, margin: 10, borderRadius: 5}}
+      />
       <Text style={styles.textBar}>Sign Up</Text>
       <View style={styles.rowRegister}>
         <Text

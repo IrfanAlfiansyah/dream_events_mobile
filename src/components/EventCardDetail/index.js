@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import styles from './styles';
 import attendees from '../../assets/event/attendees.png';
 
-export default function EventCardDetail() {
+export default function EventCardDetail(props) {
   return (
     <>
       <ScrollView style={styles.card}>
@@ -13,7 +13,7 @@ export default function EventCardDetail() {
           style={styles.image}
           resizeMode={'cover'}>
           <View style={styles.rowCard}>
-            <Text style={styles.cardTextBold}>Sights & Sounds Exhibition</Text>
+            <Text style={styles.cardTextBold}>{props.name}</Text>
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
               <Icon
                 name="map-marker"
@@ -23,7 +23,7 @@ export default function EventCardDetail() {
                   marginRight: 10,
                 }}
               />
-              <Text style={styles.cardText}>Jakarta, Indonesia</Text>
+              <Text style={styles.cardText}>{props.location}</Text>
             </View>
             <View
               style={{
@@ -38,7 +38,7 @@ export default function EventCardDetail() {
                   marginRight: 10,
                 }}
               />
-              <Text style={styles.cardText}>Wed, 15 Nov, 4:00 PM</Text>
+              <Text style={styles.cardText}>{props.dateTimeShow}</Text>
             </View>
             <Text style={styles.cardText}>Attendees</Text>
             <Image source={attendees} />
