@@ -1,15 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import {
-  View,
-  Image,
-  Text,
-  ScrollView,
-  TextInput,
-  TouchableOpacity,
-} from 'react-native';
+import {View, Image, Text, ScrollView, TouchableOpacity} from 'react-native';
 import HomeHeader from '../../components/Header/home';
 import styles from './styles';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import EventCard from '../../components/EventCard';
 import moment from 'moment';
 import axios from '../../utils/axios';
@@ -61,14 +53,6 @@ export default function Home(props) {
     <>
       <HomeHeader {...props} />
       <ScrollView style={styles.container}>
-        <View style={styles.searchBar}>
-          <Icon name="search" size={25} color={'white'} />
-          <TextInput
-            style={styles.input}
-            placeholderTextColor={'rgba(160, 163, 189, 1)'}
-            placeholder="Search Event"
-          />
-        </View>
         <View style={styles.sortDateContainer}>
           {listDateShow.map((item, index) => (
             <TouchableOpacity

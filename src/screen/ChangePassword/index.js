@@ -4,15 +4,40 @@ import {
   Text,
   TextInput,
   ScrollView,
+  ToastAndroid,
   TouchableOpacity,
 } from 'react-native';
 import styles from './styles';
 import Icon from 'react-native-vector-icons/Feather';
+import {updatePwd} from '../../stores/action/user';
+import {useDispatch} from 'react-redux';
 
 export default function ChangePassword() {
+  const dispatch = useDispatch();
   const [isPwdShown, setIsPwdShown] = useState(false);
   const [isPwdShown2, setIsPwdShown2] = useState(false);
   const [isPwdShown3, setIsPwdShown3] = useState(false);
+  const [form, setForm] = useState({
+    oldPassword: '',
+    newPassword: '',
+    confirmPassword: '',
+  });
+
+  const handleChangeForm = (text, name) => {
+    setForm({...form, [name]: text});
+  };
+
+  const handleUpdatePassword = async () => {
+    try {
+      // const id = profile.id;
+      const result = await dispatch(updatePwd(form));
+      ToastAndroid.show(result.action.payload.data.msg, ToastAndroid.SHORT);
+    } catch (error) {
+      console.log(error);
+      ToastAndroid.show(error.response.data.msg, ToastAndroid.SHORT);
+    }
+  };
+
   return (
     <>
       <ScrollView style={styles.password}>
@@ -25,6 +50,7 @@ export default function ChangePassword() {
               placeholderTextColor={'rgba(160, 163, 189, 1)'}
               placeholder="Input Old Password"
               autoCapitalize="none"
+              onChangeText={text => handleChangeForm(text, 'oldPassword')}
             />
             <TouchableOpacity
               style={{
@@ -51,6 +77,7 @@ export default function ChangePassword() {
               placeholderTextColor={'rgba(160, 163, 189, 1)'}
               placeholder="Input New Password"
               autoCapitalize="none"
+              onChangeText={text => handleChangeForm(text, 'newPassword')}
             />
             <TouchableOpacity
               style={{
@@ -77,6 +104,7 @@ export default function ChangePassword() {
               placeholderTextColor={'rgba(160, 163, 189, 1)'}
               placeholder="Confirm New Password"
               autoCapitalize="none"
+              onChangeText={text => handleChangeForm(text, 'confirmPassword')}
             />
             <TouchableOpacity
               style={{
@@ -96,7 +124,9 @@ export default function ChangePassword() {
             </TouchableOpacity>
           </View>
           <View style={styles.buttonSave}>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={handleUpdatePassword}>
               <Text style={styles.save}>Update</Text>
             </TouchableOpacity>
           </View>

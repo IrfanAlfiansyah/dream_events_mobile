@@ -2,11 +2,18 @@ import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
-  StyleSheet,
+  Image,
   FlatList,
+  TouchableOpacity,
   ActivityIndicator,
 } from 'react-native';
 import axios from '../../utils/axios';
+import defaultImage from '../../assets/event/event.png';
+import styles from './styles';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import moment from 'moment';
+import SearchName from '../../components/SearchName';
+import Sort from '../../components/Sort';
 
 export default function AllEvent(props) {
   const [data, setData] = useState([]);
@@ -16,6 +23,9 @@ export default function AllEvent(props) {
   const [loading, setLoading] = useState(false);
   const [last, setLast] = useState(false);
   const [loadMore, setLoadMore] = useState(false);
+  const [searchName, setSearchName] = useState('');
+  // const [sort, setSort] = useState('ASC');
+  // const [sortBy, setSortBy] = useState('');
 
   useEffect(() => {
     getDataProduct();
@@ -23,13 +33,14 @@ export default function AllEvent(props) {
 
   useEffect(() => {
     getDataProduct();
-  }, [page]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [page, searchName]);
 
   const getDataProduct = async () => {
     try {
       if (page <= totalPage) {
         const result = await axios.get(
-          `product?searchName=&sort=&limit=10&page=${page}&searchDateCreated=`,
+          `event?name=${searchName}&sort=&limit=4&page=${page}&searchDate=`,
         );
         if (page === 1) {
           setData(result.data.data);
@@ -72,15 +83,32 @@ export default function AllEvent(props) {
     }
   };
 
+  const handleSort = sortItems => {
+    // setSortBy('name');
+    setSort(sortItems);
+  };
+
+  const handleSearch = text => {
+    console.log('ARE YOU CALLING ME ?', text);
+    setSearchName(text);
+  };
+
+  const handleDetail = eventId => {
+    props.navigation.navigate('Detail', {eventId: eventId});
+  };
+
   const ListHeader = () => {
     return (
       <>
         <View style={styles.content}>
-          <View style={styles.search}>
-            <Text>Search</Text>
+          <View style={styles.filter}>
+            <SearchName search={handleSearch} searchName={searchName} />
+            <Sort sort={handleSort} />
           </View>
-          <View style={styles.sort}>
-            <Text>Sort</Text>
+          <View style={styles.event}>
+            <View style={styles.eventView}>
+              <Text style={styles.eventText}>Events For You</Text>
+            </View>
           </View>
         </View>
       </>
@@ -95,7 +123,29 @@ export default function AllEvent(props) {
         keyExtractor={item => item.id}
         renderItem={({item}) => (
           <View style={styles.card}>
-            <Text style={{color: 'white'}}>{item.name}</Text>
+            <Image
+              source={
+                item.image
+                  ? {
+                      uri: `https://res.cloudinary.com/dizpe4s9c/image/upload/v1663089546/${item.image}`,
+                    }
+                  : defaultImage
+              }
+              style={styles.image}
+            />
+            <View style={styles.rowCard}>
+              <Text style={styles.cardTextBold}>{item.name}</Text>
+              <Text style={styles.cardText}>
+                {moment(item.dateTimeShow).format('ddd MMM Do , h:mm a')}
+              </Text>
+              <TouchableOpacity onPress={handleDetail}>
+                <Icon
+                  name="arrow-circle-right"
+                  size={35}
+                  color={'rgba(252, 16, 85, 1)'}
+                />
+              </TouchableOpacity>
+            </View>
           </View>
         )}
         onRefresh={handleRefresh}
@@ -116,26 +166,3 @@ export default function AllEvent(props) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  content: {
-    flexDirection: 'row',
-  },
-  search: {
-    flex: 4,
-  },
-  sort: {
-    flex: 2,
-  },
-  card: {
-    paddingHorizontal: 20,
-    paddingVertical: 25,
-    alignItems: 'center',
-    borderRadius: 20,
-    marginBottom: 10,
-    elevation: 2,
-    marginHorizontal: 2,
-    flex: 1,
-    backgroundColor: 'brown',
-  },
-});

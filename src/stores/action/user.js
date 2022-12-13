@@ -14,17 +14,17 @@ export const logout = refreshToken => {
   };
 };
 
-export const updateProfile = (userId, formProfile) => {
+export const updateProfile = (userId, form) => {
   return {
     type: 'UPDATE_PROFILE',
-    payload: axios.patch(`user/profile/${userId}`, formProfile),
+    payload: axios.patch(`user/profile/${userId}`, form),
   };
 };
 
-export const updatePwd = (userId, formPwd) => {
+export const updatePwd = (userId, form) => {
   return {
     type: 'UPDATE_PASSWORD',
-    payload: axios.patch(`user/password/${userId}`, formPwd),
+    payload: axios.patch(`user/updatePassword/${userId}`, form),
   };
 };
 

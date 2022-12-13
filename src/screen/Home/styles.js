@@ -5,15 +5,6 @@ export default StyleSheet.create({
     flex: 1,
     backgroundColor: 'rgba(51, 102, 255, 1)',
   },
-  searchBar: {
-    borderWidth: 1,
-    borderRadius: 5,
-    borderColor: 'white',
-    margin: 25,
-    paddingHorizontal: 10,
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
   input: {
     color: 'white',
     fontSize: 16,
@@ -29,6 +20,7 @@ export default StyleSheet.create({
     justifyContent: 'space-around',
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
+    marginTop: 20,
   },
   date: {
     color: 'white',
@@ -63,7 +55,7 @@ export default StyleSheet.create({
     borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 100,
+    marginBottom: 150,
   },
   buttonText: {
     fontFamily: 'Merienda-ExtraBold',
