@@ -41,4 +41,12 @@ export default StyleSheet.create({
     fontSize: 16,
     color: 'white',
   },
+  iconEye: {
+    position: 'absolute',
+    right: 10,
+    top: 10,
+    height: '100%',
+    paddingHorizontal: 12,
+    justifyContent: 'center',
+  },
 });

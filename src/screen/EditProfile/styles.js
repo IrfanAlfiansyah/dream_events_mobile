@@ -77,4 +77,58 @@ export default StyleSheet.create({
     fontSize: 16,
     color: 'white',
   },
+
+  wrapper: {
+    backgroundColor: '#F5F6F8',
+    flex: 1,
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22,
+  },
+  modalView: {
+    width: 300,
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  buttonModal: {
+    width: '100%',
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+    marginVertical: 5,
+    paddingVertical: 15,
+  },
+  buttonModalOpen: {
+    backgroundColor: '#F194FF',
+  },
+  buttonModalClose: {
+    backgroundColor: '#2196F3',
+  },
+  textStyle: {
+    color: 'white',
+    textAlign: 'center',
+    fontFamily: 'Merienda-Bold',
+    fontSize: 12,
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: 'center',
+    fontSize: 20,
+    fontFamily: 'Merienda-ExtraBold',
+    color: 'black',
+  },
 });

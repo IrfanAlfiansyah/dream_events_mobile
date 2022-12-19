@@ -3,6 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const axiosApiIntances = axios.create({
   baseURL: 'https://dream-events-backend.vercel.app/api/',
+  // baseURL: 'http://192.168.43.183:3001/api/',
 });
 
 // Add a request interceptor

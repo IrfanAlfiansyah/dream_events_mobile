@@ -13,7 +13,7 @@ export default function Sort(props) {
   ]);
 
   const handleSort = items => {
-    props.sort(items);
+    props.sort(items.value);
   };
   return (
     <>

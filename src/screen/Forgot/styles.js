@@ -36,4 +36,15 @@ export default StyleSheet.create({
     fontSize: 16,
     fontFamily: 'Merienda-Regular',
   },
+  button: {
+    color: 'white',
+    fontFamily: 'Merienda-ExtraBold',
+    fontSize: 16,
+  },
+  logo: {
+    width: 140,
+    height: 35,
+    margin: 10,
+    borderRadius: 5,
+  },
 });

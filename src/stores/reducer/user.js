@@ -38,20 +38,26 @@ const user = (state = initialState, action) => {
         isError: false,
       };
     }
-    case 'LOGOUT_FULFILLED': {
+    case 'UPDATE_IMAGE_PENDING': {
+      return {
+        ...state,
+        isLoading: true,
+        isError: false,
+      };
+    }
+    case 'UPDATE_IMAGE_FULFILLED': {
       return {
         ...state,
         isLoading: false,
         isError: false,
-        data: {},
         message: action.payload.data.message,
       };
     }
-    case 'LOGOUT_REJECTED': {
+    case 'UPDATE_IMAGE_REJECTED': {
       return {
         ...state,
-        isError: true,
         isLoading: false,
+        isError: true,
         message: action.payload.response.data.message,
       };
     }
@@ -94,6 +100,29 @@ const user = (state = initialState, action) => {
       };
     }
     case 'UPDATE_PWD_REJECTED': {
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+        message: action.payload.response.data.message,
+      };
+    }
+    case 'FORGOT_PWD_PENDING': {
+      return {
+        ...state,
+        isLoading: true,
+        isError: false,
+      };
+    }
+    case 'FORGOT_PWD_FULFILLED': {
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        message: action.payload.data.message,
+      };
+    }
+    case 'FORGOT_PWD_REJECTED': {
       return {
         ...state,
         isLoading: false,

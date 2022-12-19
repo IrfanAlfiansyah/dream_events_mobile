@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import axios from '../../utils/axios';
 import {
   View,
   Text,
@@ -7,42 +6,57 @@ import {
   ScrollView,
   Image,
   ActivityIndicator,
+  ToastAndroid,
   TouchableOpacity,
 } from 'react-native';
 import styles from './styles';
 import logo from '../../assets/auth/logo.png';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import Notification from '../../utils/notif';
+import {useDispatch} from 'react-redux';
+import {forgotPwd} from '../../stores/action/user';
 
 export default function Forgot(props) {
-  // const [form, setForm] = useState({});
+  const dispatch = useDispatch();
+  const [form, setForm] = useState({
+    email: '',
+  });
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleForgot = () => {
-    props.navigation.navigate('ResetPassword');
+  const handleNotification = () => {
+    console.log('Click Me!');
+    Notification.showNotification();
   };
 
-  // const handleForgot = async () => {
-  //   try {
-  //     setIsLoading(true);
-  //     const result = await axios.post('auth/forgotPassword', form);
-  //     alert(result.data.message);
-  //     props.navigation.navigate('ResetPassword');
-  //   } catch (error) {
-  //     setIsLoading(false);
-  //     alert(error.response.data.message);
-  //   }
-  // };
+  const handleNotificationSchedule = () => {
+    console.log('Click Me!');
+    const setSchedule = {
+      title: 'Time for lunch',
+      message: 'Dont forget your meal',
+      date: new Date(Date.now() + 5 * 1000),
+    };
+    Notification.scheduleProductNotification(setSchedule);
+  };
 
-  // const handleChangeForm = (value, name) => {
-  //   setForm({...form, [name]: value});
-  // };
+  const handleForgot = async () => {
+    try {
+      setIsLoading(true);
+      const result = await dispatch(forgotPwd(form));
+      ToastAndroid.show(result.action.payload.data.message, ToastAndroid.LONG);
+      props.navigation.navigate('ResetPassword');
+    } catch (error) {
+      setIsLoading(false);
+      console.log(error);
+      ToastAndroid.show(error.response.data.message, ToastAndroid.LONG);
+    }
+  };
+
+  const handleChangeForm = (text, name) => {
+    setForm({...form, [name]: text});
+  };
 
   return (
     <ScrollView style={styles.container}>
-      <Image
-        source={logo}
-        style={{width: 140, height: 35, margin: 10, borderRadius: 5}}
-      />
+      <Image source={logo} style={styles.logo} />
       <Text style={styles.textBar}>Forgot Password</Text>
       <Text style={styles.textTop}>You'll get mail soon on your email </Text>
       <View style={styles.inputContainer}>
@@ -53,7 +67,7 @@ export default function Forgot(props) {
             placeholder="Email"
             autoCapitalize="none"
             keyboardType="email-address"
-            // onChangeText={text => handleChangeForm(text, 'email')}
+            onChangeText={text => handleChangeForm(text, 'email')}
           />
         </View>
       </View>
@@ -64,15 +78,16 @@ export default function Forgot(props) {
         {isLoading ? (
           <ActivityIndicator color="white" size="small" />
         ) : (
-          <Text
-            style={{
-              color: 'white',
-              fontFamily: 'Merienda-ExtraBold',
-              fontSize: 16,
-            }}>
-            Send
-          </Text>
+          <Text style={styles.button}>Send</Text>
         )}
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.buttonLogin} onPress={handleNotification}>
+        <Text style={styles.button}>Notif</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.buttonLogin}
+        onPress={handleNotificationSchedule}>
+        <Text style={styles.button}>Schedule Notif</Text>
       </TouchableOpacity>
     </ScrollView>
   );

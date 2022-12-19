@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "19531191131",
+    "project_id": "dream-events-365800",
+    "storage_bucket": "dream-events-365800.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:19531191131:android:fcd06a261dcb59efc2807e",
+        "android_client_info": {
+          "package_name": "com.dream_events"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "19531191131-3bra7rooll8lsk6gc15ce0cvvfadthto.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxiUSSSYerM911c7ddfkLQt31D9KbDQ-c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "19531191131-3bra7rooll8lsk6gc15ce0cvvfadthto.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

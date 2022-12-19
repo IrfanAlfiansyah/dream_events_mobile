@@ -24,7 +24,7 @@ export default function AllEvent(props) {
   const [last, setLast] = useState(false);
   const [loadMore, setLoadMore] = useState(false);
   const [searchName, setSearchName] = useState('');
-  // const [sort, setSort] = useState('ASC');
+  const [sort, setSort] = useState();
   // const [sortBy, setSortBy] = useState('');
 
   useEffect(() => {
@@ -120,7 +120,7 @@ export default function AllEvent(props) {
       <FlatList
         data={data}
         numColumns="1"
-        keyExtractor={item => item.id}
+        keyExtractor={item => item.eventId}
         renderItem={({item}) => (
           <View style={styles.card}>
             <Image

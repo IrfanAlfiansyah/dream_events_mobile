@@ -6,17 +6,20 @@ import {
   ScrollView,
   ToastAndroid,
   TouchableOpacity,
+  ActivityIndicator,
 } from 'react-native';
 import styles from './styles';
 import Icon from 'react-native-vector-icons/Feather';
 import {updatePwd} from '../../stores/action/user';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
-export default function ChangePassword() {
+export default function ChangePassword(props) {
   const dispatch = useDispatch();
   const [isPwdShown, setIsPwdShown] = useState(false);
   const [isPwdShown2, setIsPwdShown2] = useState(false);
   const [isPwdShown3, setIsPwdShown3] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const profile = useSelector(state => state.user.data);
   const [form, setForm] = useState({
     oldPassword: '',
     newPassword: '',
@@ -29,12 +32,15 @@ export default function ChangePassword() {
 
   const handleUpdatePassword = async () => {
     try {
-      // const id = profile.id;
-      const result = await dispatch(updatePwd(form));
-      ToastAndroid.show(result.action.payload.data.msg, ToastAndroid.SHORT);
+      const id = profile.userId;
+      setIsLoading(true);
+      const result = await dispatch(updatePwd(id, form));
+      ToastAndroid.show(result.action.payload.data.message, ToastAndroid.LONG);
+      props.navigation.navigate('Profile');
     } catch (error) {
+      setIsLoading(false);
       console.log(error);
-      ToastAndroid.show(error.response.data.msg, ToastAndroid.SHORT);
+      ToastAndroid.show(error.response.data.message, ToastAndroid.LONG);
     }
   };
 
@@ -53,14 +59,7 @@ export default function ChangePassword() {
               onChangeText={text => handleChangeForm(text, 'oldPassword')}
             />
             <TouchableOpacity
-              style={{
-                position: 'absolute',
-                right: 10,
-                top: 10,
-                height: '100%',
-                paddingHorizontal: 12,
-                justifyContent: 'center',
-              }}
+              style={styles.iconEye}
               onPress={() => setIsPwdShown(!isPwdShown)}>
               {isPwdShown ? (
                 <Icon name="eye-off" size={18} />
@@ -80,14 +79,7 @@ export default function ChangePassword() {
               onChangeText={text => handleChangeForm(text, 'newPassword')}
             />
             <TouchableOpacity
-              style={{
-                position: 'absolute',
-                right: 10,
-                top: 10,
-                height: '100%',
-                paddingHorizontal: 12,
-                justifyContent: 'center',
-              }}
+              style={styles.iconEye}
               onPress={() => setIsPwdShown2(!isPwdShown2)}>
               {isPwdShown2 ? (
                 <Icon name="eye-off" size={18} />
@@ -107,14 +99,7 @@ export default function ChangePassword() {
               onChangeText={text => handleChangeForm(text, 'confirmPassword')}
             />
             <TouchableOpacity
-              style={{
-                position: 'absolute',
-                right: 10,
-                top: 10,
-                height: '100%',
-                paddingHorizontal: 12,
-                justifyContent: 'center',
-              }}
+              style={styles.iconEye}
               onPress={() => setIsPwdShown3(!isPwdShown3)}>
               {isPwdShown3 ? (
                 <Icon name="eye-off" size={18} />
@@ -127,7 +112,11 @@ export default function ChangePassword() {
             <TouchableOpacity
               style={styles.button}
               onPress={handleUpdatePassword}>
-              <Text style={styles.save}>Update</Text>
+              {isLoading ? (
+                <ActivityIndicator color="white" size="small" />
+              ) : (
+                <Text style={styles.save}>Update</Text>
+              )}
             </TouchableOpacity>
           </View>
         </View>

@@ -20,6 +20,7 @@ import MyWishlist from '../screen/MyWishlist';
 import AllEvent from '../screen/AllEvent';
 
 import HeaderDefault from '../components/Header/default';
+import Order from '../screen/Order';
 
 function MenuNavigator() {
   return (
@@ -111,6 +112,13 @@ export default function AppStackNavigator() {
       <Stack.Screen
         name="All Event"
         component={AllEvent}
+        options={{
+          header: props => <HeaderDefault {...props} name="List Event" />,
+        }}
+      />
+      <Stack.Screen
+        name="Order"
+        component={Order}
         options={{
           header: props => <HeaderDefault {...props} name="List Event" />,
         }}

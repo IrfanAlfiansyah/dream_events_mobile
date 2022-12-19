@@ -21,6 +21,7 @@ export default function Detail(props) {
   const [data, setData] = useState([]);
   const [image, setImage] = useState('');
   const eventId = props.route.params.eventId;
+  console.log(eventId);
 
   useEffect(() => {
     getData();
@@ -53,7 +54,7 @@ export default function Detail(props) {
   //   }
   // };
   const handleOrder = () => {
-    props.navigation.navigate('Booking');
+    props.navigation.navigate('Order');
   };
 
   return (
