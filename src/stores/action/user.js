@@ -7,10 +7,10 @@ export const getUserById = userId => {
   };
 };
 
-export const updateProfile = (userId, form) => {
+export const updateProfile = (userId, body) => {
   return {
     type: 'UPDATE_PROFILE',
-    payload: axios.patch(`/user/updateUser/${userId}`, form),
+    payload: axios.patch(`user/updateUser/${userId}`, body),
   };
 };
 

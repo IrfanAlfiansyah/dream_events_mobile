@@ -18,8 +18,6 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import DatePicker from 'react-native-date-picker';
 import {useDispatch, useSelector} from 'react-redux';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
-// import ImagePicker from 'react-native-image-picker';
-// import {PermissionsAndroid} from 'react-native';
 import profileDefault from '../../assets/auth/profile-empty.jpg';
 import {
   getUserById,
@@ -31,7 +29,7 @@ const wait = timeout => {
   return new Promise(resolve => setTimeout(resolve, timeout));
 };
 
-export default function EditProfile() {
+export default function EditProfile(props) {
   const dispatch = useDispatch();
   const [date, setDate] = useState(new Date());
   const [open, setOpen] = useState(false);
@@ -42,14 +40,13 @@ export default function EditProfile() {
   const [binaryImage, setBinaryImage] = useState(profile.image);
   const [modalVisible, setModalVisible] = useState(false);
   const [refreshing, setRefreshing] = React.useState(false);
-  const [user, setUser] = useState({
+  const [form, setForm] = useState({
     name: '',
     username: '',
     profession: '',
     nationality: '',
     gender: '',
     dateOfBirth: '',
-    image: '',
   });
 
   const onRefresh = React.useCallback(() => {
@@ -57,20 +54,17 @@ export default function EditProfile() {
     wait(2000).then(() => setRefreshing(false));
   }, []);
 
-  const handleChangeUser = (value, name) => {
-    // e.target.value || e.target.name;
-    console.log('change user');
-    setUser({...user, [name]: value});
+  const handleChangeUser = (text, name) => {
+    setForm({...form, [name]: text});
   };
 
   const handleUpdateProfile = async () => {
     try {
       const id = profile.userId;
-      console.log('update profile');
       setIsLoading(true);
-      const result = await dispatch(updateProfile(id, user));
+      const result = await dispatch(updateProfile(id, form));
       ToastAndroid.show(result.action.payload.data.message, ToastAndroid.LONG);
-      await dispatch(getUserById(id));
+      props.navigation.navigate('Profile');
     } catch (error) {
       setIsLoading(false);
       console.log(error);
@@ -162,14 +156,7 @@ export default function EditProfile() {
               <View style={styles.centeredView}>
                 <View style={styles.modalView}>
                   <Text style={styles.modalText}>Change Image Profile</Text>
-                  <Image
-                    source={{uri: imageprev}}
-                    style={{
-                      width: 120,
-                      height: 120,
-                      borderRadius: 120,
-                    }}
-                  />
+                  <Image source={{uri: imageprev}} style={styles.imagePrev} />
                   <Pressable
                     style={[styles.buttonModal, styles.buttonModalClose]}
                     onPress={() => handleUpdateImage()}>
@@ -228,7 +215,6 @@ export default function EditProfile() {
               placeholderTextColor={'rgba(105, 111, 121, 0.8)'}
               placeholder={profile.name}
               onChangeText={text => handleChangeUser(text, 'name')}
-              value={user.name}
             />
           </View>
           <View style={styles.textEdit}>
@@ -280,9 +266,10 @@ export default function EditProfile() {
             <View style={styles.datePicker}>
               <TextInput
                 style={styles.inputDate}
+                type={date}
                 placeholder={profile.dateOfBirth}
                 placeholderTextColor={'rgba(105, 111, 121, 0.8)'}
-                value={user.name}
+                value={form.dateOfBirth}
                 onChangeText={text => handleChangeUser(text, 'dateOfBirth')}
               />
               <View style={styles.textEdit}>

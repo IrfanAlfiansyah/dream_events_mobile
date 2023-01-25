@@ -131,4 +131,9 @@ export default StyleSheet.create({
     fontFamily: 'Merienda-ExtraBold',
     color: 'black',
   },
+  imagePrev: {
+    width: 120,
+    height: 120,
+    borderRadius: 120,
+  },
 });
